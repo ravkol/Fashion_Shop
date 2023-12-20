@@ -1,34 +1,40 @@
 {
-  "name": "Fashion_Shop",
-  "version": "1.0.0",
-  "description": "A simple CAP project.",
-  "repository": "<Add your repository here>",
-  "license": "UNLICENSED",
-  "private": true,
-  "dependencies": {
-    "@sap/cds": "^7",
-    "express": "^4",
-    "@sap/cds-hana": "^2"
-  },
-  "scripts": {
-    "start": "cds-serve"
-  },
-  "cds": {
-    "build": {
-      "tasks": [
-        {
-          "for": "hana",
-          "dest": "../db"
-        },
-        {
-          "for": "node-cf"
-        }
-      ]
+ "name": "Fashion_Shop",
+ "version": "1.0.0",
+ "description": "A simple CAP project.",
+ "repository": "<Add your repository here>",
+ "license": "UNLICENSED",
+ "engines": {
+  "node": "^12.18.0 || ^14.0.0 || ^16.0.0 || ^18.0.0"
+ },
+ "private": true,
+ "dependencies": {
+  "@sap/cds": "^7",
+  "express": "^4",
+  "@sap/cds-hana": "^2",
+  "@sap/xssec": "^3",
+  "passport": "^0"
+ },
+ "scripts": {
+  "start": "cds-serve"
+ },
+ "cds": {
+  "build": {
+   "tasks": [
+    {
+     "for": "hana",
+     "dest": "../db"
     },
-    "requires": {
-      "db": {
-        "kind": "hana-cloud"
-      }
+    {
+     "for": "node-cf"
     }
+   ]
+  },
+  "requires": {
+   "db": {
+    "kind": "hana-cloud"
+   },
+   "auth": "xsuaa"
   }
+ }
 }

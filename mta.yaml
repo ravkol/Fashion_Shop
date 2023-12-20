@@ -23,6 +23,7 @@ modules:
           srv-url: ${default-url}
     requires:
       - name: Fashion_Shop-db
+      - name: Fashion_Shop-auth
 
   - name: Fashion_Shop-db-deployer
     type: hdb
@@ -38,3 +39,12 @@ resources:
     parameters:
       service: hana
       service-plan: hdi-shared
+  - name: Fashion_Shop-auth
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: xsuaa
+      service-plan: application
+      path: ./xs-security.json
+      config:
+        xsappname: Fashion_Shop-${org}-${space}
+        tenant-mode: dedicated
